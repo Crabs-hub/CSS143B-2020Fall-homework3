@@ -13,18 +13,65 @@ public class SingleLinkedList {
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
         // homework
+        SingleLinkedList copy = list;
+
+        if(list == null){
+            this.head = null;
+        }
+        this.head = copy.head;
+        this.size = copy.size;
+        ListNode dummy = this.head;
+        while(copy.head.next != null){
+            this.head.next = copy.head.next;
+            copy.head.next = copy.head.next.next;
+        }
+        this.head = dummy;
     }
 
     public int removeAll(int valueToRemove) {
         // homework
+        int replaced = 0;
+        ListNode dummy;
+        while(this.head.val == valueToRemove){
+            this.head = this.head.next;
+        }
+        dummy = this.head;
+        while(this.head.next != null) {
+            if(this.head.next.val == valueToRemove && this.head.next.next == null) {
+                this.head.next = null;
+                replaced++;
+                size--;
+            }else if (this.head.next.val == valueToRemove) {
+                this.head.next = this.head.next.next;
+                replaced++;
+                size--;
+            }else{
+                this.head = this.head.next;
+            }
+        }
+        this.head = dummy;
         // in-place
-        return -1; // place holder
+        return replaced; // place holder
     }
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
         // homework
-        // in-place
+        ListNode current = this.head;
+        ListNode prev = current;
+        ListNode next;
+        if(this.head == null || this.head.next == null){
+
+        }else {
+            while (current != null) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            this.head = prev;
+            // in-place
+        }
     }
 
     // do not change any function below

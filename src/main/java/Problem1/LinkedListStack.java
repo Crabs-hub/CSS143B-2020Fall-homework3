@@ -1,5 +1,7 @@
 package Problem1;
 
+import org.w3c.dom.Node;
+
 import java.util.LinkedList;
 
 public class LinkedListStack<T> implements Stack<T> {
@@ -9,30 +11,44 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public LinkedListStack() {
         // homework
+        data = null;
     }
 
     @Override
     public boolean push(T val) {
         // homework
-        return false;   // place holder
+        if(val == null){
+            return false;
+        }
+
+        data = new LinkedList<T>();
+        data.addFirst(val);
+
+        return true;   // place holder
     }
 
     @Override
     public T pop() {
         // homework
-        T val = null;   // place holder
+        if(data.size() == 0){
+
+        }
+        T val = data.removeFirst();
         return val;   // place holder
     }
 
     @Override
     public T peek() {
         // homework
-        T val = null;   // place holder
+        T val = data.peekFirst();  // place holder
         return val;   // place holder
     }
 
     @Override
     public int size() {
+        if(data == null){
+            return 0;
+        }
         return data.size();
     }
 }
