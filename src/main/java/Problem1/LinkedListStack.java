@@ -11,7 +11,7 @@ public class LinkedListStack<T> implements Stack<T> {
 
     public LinkedListStack() {
         // homework
-        data = null;
+        data = new LinkedList<T>();
     }
 
     @Override
@@ -20,8 +20,6 @@ public class LinkedListStack<T> implements Stack<T> {
         if(val == null){
             return false;
         }
-
-        data = new LinkedList<T>();
         data.addFirst(val);
 
         return true;   // place holder
@@ -30,10 +28,12 @@ public class LinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() {
         // homework
+        T val = null;
         if(data.size() == 0){
 
+        }else {
+            val = data.removeFirst();
         }
-        T val = data.removeFirst();
         return val;   // place holder
     }
 

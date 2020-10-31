@@ -1,5 +1,6 @@
 package Problem3;
 
+import Problem1.ArrayStack;
 import Problem1.LinkedListStack;
 import Problem1.Stack;
 import Problem2.ListNode;
@@ -11,6 +12,19 @@ public class Problem3 {
         // homework
         // !!! must use your ArrayStack or LinkedListStack in problem 1
         // print with the following format. System.out.println() will not pass test.
-        print.println("hello world");   // place holder
+        ListNode dummy = list;
+        int capacity = 0;
+        while(dummy != null){
+            dummy = dummy.next;
+            capacity++;
+        }
+        ArrayStack <ListNode> stack = new ArrayStack <> (capacity);
+        while(list != null){
+            stack.push(list);
+            list = list.next;
+        }
+        for(int i = capacity - 1; i > 0; i--){
+            print.println(stack.pop().val);
+        }
     }
 }

@@ -56,22 +56,20 @@ public class SingleLinkedList {
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
-        // homework
-        ListNode current = this.head;
-        ListNode prev = current;
-        ListNode next;
-        if(this.head == null || this.head.next == null){
-
-        }else {
-            while (current != null) {
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-            }
-            this.head = prev;
-            // in-place
+        if(this.head.val == 0){
+            head = head.next;
         }
+        ListNode prev = null;
+        ListNode current = head;
+        while (current != null) {
+            ListNode nextTemp = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextTemp;
+        }
+        // in-place
+
+        head = prev;
     }
 
     // do not change any function below
